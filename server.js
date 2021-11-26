@@ -6,6 +6,7 @@ const io = require('socket.io')(server, {
     origin: '*',
   },
 });
+const port = process.env.PORT || 9999; 
 const rooms = new Map();
 
 app.use(express.static('build'));
@@ -18,7 +19,7 @@ io.on('connection', (socket) => {
   console.log('user connected', socket.id);
 });
 
-server.listen(9999, (err) => {
+server.listen(port, (err) => {
   if (err) {
     throw Error(err);
   }

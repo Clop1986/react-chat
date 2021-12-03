@@ -16,7 +16,7 @@ function Chat({ users, messages, userName, roomId, onAddMessage }) {
   };
 
   React.useEffect(() => {
-    messagesRef.current.scrollTo(0, 99999);
+    messagesRef.current.scroll(0, messagesRef.current.scrollHeight);
   }, [messages]);
 
   return (

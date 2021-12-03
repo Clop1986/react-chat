@@ -88,7 +88,7 @@
 }
 
 .message {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
 
   p {
     display: inline-flex;
@@ -97,7 +97,8 @@
     background-color: #7160ff;
     padding: 10px 15px 15px;
     color: #fff;
-    margin-bottom: 2px;
+    margin-bottom: 2px;   
+    overflow-wrap: anywhere; 
   }
 
   span {

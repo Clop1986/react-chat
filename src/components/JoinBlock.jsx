@@ -17,7 +17,7 @@ function JoinBlock({onLogin}) {
     setLoading(true);
     await axios.post('/rooms', obj);
     onLogin(obj);    
-  }
+  }  
 
   return (
     <div className="join-block">
@@ -26,6 +26,12 @@ function JoinBlock({onLogin}) {
       <button className="btn btn-success" onClick={onEnter} disabled={isLoading}>
         {isLoading ? 'Вход...': 'Войти'}
       </button>
+      {/* <h4 className="text-center mt-4">Комнаты ():</h4>
+      <ul>         
+        {rooms.map(() => (
+          <li key={rooms}>{rooms}</li>
+        ))}        
+      </ul> */}
     </div>
   );
 }

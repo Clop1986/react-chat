@@ -6,18 +6,22 @@ function Chat({ users, messages, userName, roomId, onAddMessage }) {
   const messagesRef = React.useRef(null);
 
   const onSendMessage = () => {
-    socket.emit('ROOM:NEW_MESSAGE', {
-      userName,
-      roomId,
-      text: messageValue,
-    });
-    onAddMessage({ userName, text: messageValue });
-    setMessageValue('');
+    if (messageValue) {
+      socket.emit('ROOM:NEW_MESSAGE', {
+        userName,
+        roomId,
+        text: messageValue,
+      });    
+      onAddMessage({ userName, text: messageValue });
+      setMessageValue('');
+    }    
   };
 
   React.useEffect(() => {
     messagesRef.current.scroll(0, messagesRef.current.scrollHeight);
   }, [messages]);
+  
+  console.log(userName)
 
   return (
     <div className="chat">
@@ -27,14 +31,14 @@ function Chat({ users, messages, userName, roomId, onAddMessage }) {
         <b>Онлайн ({users.length}):</b>
         <ul>
           {users.map((name, index) => (
-            <li key={name + index}>{name}</li>
+            <li key={name + index} onClick={() => setMessageValue(!messageValue ? `${name} ` : `${messageValue} ${name} `)}>{name}</li>
           ))}
         </ul>
       </div>
       <div className="chat-messages">
         <div ref={messagesRef} className="messages">
-          {messages.map((message) => (
-            <div className="message">
+          {messages.map((message, index) => (            
+            <div key={message + index} className={message.userName === userName ? 'message message-my' : 'message'}>
               <p>{message.text}</p>
               <div>
                 <span>{message.userName}</span>

@@ -25,13 +25,7 @@ function JoinBlock({onLogin}) {
       <input type="text" placeholder="Ваше имя" value={userName} onChange={e => setUserName(e.target.value)} />
       <button className="btn btn-success" onClick={onEnter} disabled={isLoading}>
         {isLoading ? 'Вход...': 'Войти'}
-      </button>
-      {/* <h4 className="text-center mt-4">Комнаты ():</h4>
-      <ul>         
-        {rooms.map(() => (
-          <li key={rooms}>{rooms}</li>
-        ))}        
-      </ul> */}
+      </button>      
     </div>
   );
 }
